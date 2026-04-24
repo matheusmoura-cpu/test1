@@ -713,6 +713,131 @@
       background: linear-gradient(90deg, #7ddca8, #2ecc71);
     }
 
+    /* ── In the Works ── */
+    .in-the-works {
+      background: linear-gradient(180deg, rgba(66, 0, 30, 0.03) 0%, var(--bg) 100%);
+    }
+
+    .in-the-works h2 {
+      text-align: center;
+    }
+
+    .in-the-works .subtitle {
+      text-align: center;
+      margin: 0 auto 3rem;
+    }
+
+    .progress-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .progress-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .progress-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .progress-ring-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .progress-ring-wrap svg {
+      width: 110px;
+      height: 110px;
+      transform: rotate(-90deg);
+    }
+
+    .progress-ring-bg {
+      fill: none;
+      stroke: var(--primary-muted);
+      stroke-width: 8;
+    }
+
+    .progress-ring-fill {
+      fill: none;
+      stroke: var(--primary);
+      stroke-width: 8;
+      stroke-linecap: round;
+      transition: stroke-dashoffset 1.2s ease;
+    }
+
+    .progress-ring-wrap .progress-value {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .progress-card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .progress-card .progress-detail {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .progress-card .progress-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      margin-top: 0.75rem;
+    }
+
+    .progress-status.complete {
+      color: var(--accent-green);
+      background: rgba(27, 122, 74, 0.08);
+    }
+
+    .progress-status.in-progress {
+      color: var(--accent-amber);
+      background: rgba(196, 132, 29, 0.08);
+    }
+
+    .progress-status.early {
+      color: var(--primary);
+      background: var(--primary-muted);
+    }
+
+    @media (max-width: 768px) {
+      .progress-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .progress-grid {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+      }
+    }
+
     /* ── Conclusion / CTA ── */
     .conclusion {
       text-align: center;
@@ -865,6 +990,7 @@
         <li><a href="#solution">Solution</a></li>
         <li><a href="#benefits">Benefits</a></li>
         <li><a href="#comparison">Compare</a></li>
+        <li><a href="#progress">Progress</a></li>
         <li><a href="#conclusion">Conclusion</a></li>
       </ul>
     </div>
@@ -1187,6 +1313,81 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- In the Works -->
+  <section class="in-the-works" id="progress">
+    <div class="container fade-in">
+      <div class="section-label" style="margin-left: auto; margin-right: auto;">
+        <span class="icon">&#9881;</span> Current Status
+      </div>
+      <h2>In the Works</h2>
+      <p class="subtitle">
+        Here's where we stand today. The design system is actively being built — track our progress across each key area.
+      </p>
+
+      <div class="progress-grid">
+        <div class="progress-card">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 120 120">
+              <circle class="progress-ring-bg" cx="60" cy="60" r="48"></circle>
+              <circle class="progress-ring-fill" cx="60" cy="60" r="48"
+                stroke-dasharray="301.6"
+                stroke-dashoffset="0"></circle>
+            </svg>
+            <div class="progress-value">100%</div>
+          </div>
+          <h3>Foundation</h3>
+          <div class="progress-detail">Styles</div>
+          <div class="progress-status complete">&#10003; Complete</div>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 120 120">
+              <circle class="progress-ring-bg" cx="60" cy="60" r="48"></circle>
+              <circle class="progress-ring-fill" cx="60" cy="60" r="48"
+                stroke-dasharray="301.6"
+                stroke-dashoffset="241.3"></circle>
+            </svg>
+            <div class="progress-value">20%</div>
+          </div>
+          <h3>Components</h3>
+          <div class="progress-detail">Figma</div>
+          <div class="progress-status early">&#9654; Getting started</div>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 120 120">
+              <circle class="progress-ring-bg" cx="60" cy="60" r="48"></circle>
+              <circle class="progress-ring-fill" cx="60" cy="60" r="48"
+                stroke-dasharray="301.6"
+                stroke-dashoffset="60.3"></circle>
+            </svg>
+            <div class="progress-value">80%</div>
+          </div>
+          <h3>Guidelines</h3>
+          <div class="progress-detail">Documentation</div>
+          <div class="progress-status in-progress">&#9650; Nearly there</div>
+        </div>
+
+        <div class="progress-card">
+          <div class="progress-ring-wrap">
+            <svg viewBox="0 0 120 120">
+              <circle class="progress-ring-bg" cx="60" cy="60" r="48"></circle>
+              <circle class="progress-ring-fill" cx="60" cy="60" r="48"
+                stroke-dasharray="301.6"
+                stroke-dashoffset="90.5"></circle>
+            </svg>
+            <div class="progress-value">70%</div>
+          </div>
+          <h3>Design Tokens</h3>
+          <div class="progress-detail">Variables &amp; values</div>
+          <div class="progress-status in-progress">&#9650; In progress</div>
+        </div>
+      </div>
     </div>
   </section>
 
