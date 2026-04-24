@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — Building Better Products, Together</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #42001E;
+      --primary-light: #5a0a2e;
+      --primary-muted: rgba(66, 0, 30, 0.08);
+      --primary-muted-md: rgba(66, 0, 30, 0.15);
+      --bg: #FFFBF5;
+      --bg-card: #FFFFFF;
+      --text: #2D2D2D;
+      --text-light: #5A5A5A;
+      --accent-green: #1B7A4A;
+      --accent-red: #B8243E;
+      --accent-amber: #C4841D;
+      --border: rgba(66, 0, 30, 0.1);
+      --shadow-sm: 0 1px 3px rgba(66, 0, 30, 0.06);
+      --shadow-md: 0 4px 16px rgba(66, 0, 30, 0.08);
+      --shadow-lg: 0 8px 32px rgba(66, 0, 30, 0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 251, 245, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+    }
+
+    nav .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    nav .logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    nav .nav-links a:hover,
+    nav .nav-links a.active {
+      color: var(--primary);
+      background: var(--primary-muted);
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 7rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--primary);
+      background: var(--primary-muted);
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label .icon {
+      font-size: 0.9rem;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--text-light);
+      max-width: 640px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding-top: 10rem;
+      padding-bottom: 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .subtitle {
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero-visual {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      width: 200px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .hero-block:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-block .block-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-block .block-label {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--primary);
+    }
+
+    .hero-block .block-desc {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 0.35rem;
+    }
+
+    .hero-bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.04;
+      background: var(--primary);
+    }
+
+    .hero-bg-shape.one {
+      width: 600px;
+      height: 600px;
+      top: -200px;
+      right: -200px;
+    }
+
+    .hero-bg-shape.two {
+      width: 400px;
+      height: 400px;
+      bottom: -100px;
+      left: -150px;
+    }
+
+    /* ── Analogy Section ── */
+    .analogy {
+      background: var(--primary);
+      color: white;
+      border-radius: 0;
+    }
+
+    .analogy h2 {
+      color: white;
+    }
+
+    .analogy .subtitle {
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .analogy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .analogy-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      padding: 2rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .analogy-card .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .analogy-card h3 {
+      color: white;
+      margin-bottom: 0.5rem;
+    }
+
+    .analogy-card p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* ── Challenges ── */
+    .challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .challenge-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .challenge-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .challenge-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-red);
+      opacity: 0.7;
+    }
+
+    .challenge-card .card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(184, 36, 62, 0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .challenge-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .challenge-card p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .challenge-card .impact {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-red);
+      background: rgba(184, 36, 62, 0.06);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    /* ── Solution ── */
+    .solution {
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(66, 0, 30, 0.03) 100%);
+    }
+
+    .solution-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .pillar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .pillar:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pillar .pillar-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--primary-muted);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 1.25rem;
+    }
+
+    .pillar h3 {
+      font-size: 1rem;
+    }
+
+    .pillar p {
+      color: var(--text-light);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .solution-flow {
+      margin-top: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.65rem 1.4rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .flow-step .step-num {
+      width: 26px;
+      height: 26px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .flow-arrow {
+      color: var(--primary);
+      opacity: 0.3;
+      font-size: 1.2rem;
+    }
+
+    /* ── Benefits ── */
+    .benefits-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.65rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 100px;
+      background: var(--bg-card);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--primary-muted-md);
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-green);
+    }
+
+    .benefit-card .card-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(27, 122, 74, 0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.05rem;
+    }
+
+    .benefit-card p {
+      color: var(--text-light);
+      font-size: 0.88rem;
+      margin-top: 0.4rem;
+    }
+
+    .benefit-card .metric {
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      background: rgba(27, 122, 74, 0.06);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+
+    /* ── Comparison ── */
+    .comparison {
+      background: var(--primary);
+      color: white;
+    }
+
+    .comparison h2 {
+      color: white;
+      text-align: center;
+    }
+
+    .comparison .subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      margin: 0 auto 3rem;
+    }
+
+    .compare-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .compare-col {
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+    }
+
+    .compare-col.without {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .compare-col.with {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .compare-col .col-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .compare-col .col-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .compare-col.without .col-icon {
+      background: rgba(184, 36, 62, 0.25);
+    }
+
+    .compare-col.with .col-icon {
+      background: rgba(27, 122, 74, 0.3);
+    }
+
+    .compare-col .col-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .compare-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+    }
+
+    .compare-item + .compare-item {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .compare-item .item-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      margin-top: 0.15rem;
+    }
+
+    .compare-col.without .item-icon {
+      background: rgba(184, 36, 62, 0.2);
+      color: #ff8a9e;
+    }
+
+    .compare-col.with .item-icon {
+      background: rgba(27, 122, 74, 0.25);
+      color: #7ddca8;
+    }
+
+    .compare-item .item-text {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.55;
+    }
+
+    .compare-metrics {
+      margin-top: 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .metric-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      text-align: center;
+    }
+
+    .metric-card .metric-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: white;
+      line-height: 1;
+    }
+
+    .metric-card .metric-label {
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .metric-card .metric-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .metric-card .metric-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #7ddca8, #2ecc71);
+    }
+
+    /* ── Conclusion / CTA ── */
+    .conclusion {
+      text-align: center;
+    }
+
+    .conclusion h2 {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .conclusion .subtitle {
+      margin: 0 auto 3rem;
+      max-width: 560px;
+    }
+
+    .cta-points {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .cta-point {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .cta-point .point-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary-muted);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .cta-point span {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-family: 'Raleway', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(66, 0, 30, 0.25);
+      transition: all 0.25s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 28px rgba(66, 0, 30, 0.35);
+      background: var(--primary-light);
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--primary);
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* ── Animations ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      section {
+        padding: 4.5rem 1.25rem;
+      }
+
+      .hero {
+        padding-top: 7rem;
+        padding-bottom: 4rem;
+      }
+
+      nav .nav-links {
+        display: none;
+      }
+
+      .compare-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-flow {
+        flex-direction: column;
+      }
+
+      .flow-arrow {
+        transform: rotate(90deg);
+      }
+
+      .cta-points {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-visual {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-block {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Design System</div>
+      <ul class="nav-links">
+        <li><a href="#intro" class="active">Introduction</a></li>
+        <li><a href="#challenges">Challenges</a></li>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#comparison">Compare</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero / Introduction -->
+  <section class="hero" id="intro">
+    <div class="hero-bg-shape one"></div>
+    <div class="hero-bg-shape two"></div>
+    <div class="container fade-in">
+      <div class="section-label">
+        <span class="icon">&#9670;</span> Introduction
+      </div>
+      <h1>One Language for<br>Every Product Experience</h1>
+      <p class="subtitle">
+        A design system is a shared collection of guidelines, components, and standards that ensure every part of your product looks, feels, and works as one — no matter who builds it or when.
+      </p>
+      <div class="hero-visual">
+        <div class="hero-block">
+          <div class="block-icon">&#127912;</div>
+          <div class="block-label">Colors &amp; Styles</div>
+          <div class="block-desc">Unified visual identity</div>
+        </div>
+        <div class="hero-block">
+          <div class="block-icon">&#9634;</div>
+          <div class="block-label">Components</div>
+          <div class="block-desc">Reusable building blocks</div>
+        </div>
+        <div class="hero-block">
+          <div class="block-icon">&#128221;</div>
+          <div class="block-label">Guidelines</div>
+          <div class="block-desc">Shared rules &amp; patterns</div>
+        </div>
+        <div class="hero-block">
+          <div class="block-icon">&#129309;</div>
+          <div class="block-label">Alignment</div>
+          <div class="block-desc">Teams work as one</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analogy Section -->
+  <section class="analogy">
+    <div class="container fade-in">
+      <div class="section-label" style="background: rgba(255,255,255,0.1); color: white;">
+        <span class="icon">&#128161;</span> Think of it this way
+      </div>
+      <h2>A Design System Is Like a Brand Playbook</h2>
+      <p class="subtitle">
+        Just as every great franchise maintains quality through shared recipes and standards, a design system gives your teams one trusted playbook to build from.
+      </p>
+      <div class="analogy-grid">
+        <div class="analogy-card">
+          <div class="card-icon">&#127959;</div>
+          <h3>Like Architecture Blueprints</h3>
+          <p>Architects don't redesign door handles for every building. They use proven standards so everything fits together safely and beautifully. A design system does the same for digital products.</p>
+        </div>
+        <div class="analogy-card">
+          <div class="card-icon">&#127932;</div>
+          <h3>Like an Orchestra's Sheet Music</h3>
+          <p>Every musician plays their part, but the sheet music keeps them in harmony. A design system is the sheet music for your product teams — everyone plays together, beautifully.</p>
+        </div>
+        <div class="analogy-card">
+          <div class="card-icon">&#128214;</div>
+          <h3>Like a Style Guide for Writers</h3>
+          <p>Publications use style guides so every article feels like it belongs. A design system ensures every screen, page, and interaction feels like it belongs to the same brand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Challenges -->
+  <section id="challenges">
+    <div class="container fade-in">
+      <div class="section-label">
+        <span class="icon">&#9888;</span> Current Challenges
+      </div>
+      <h2>Without a Design System, Teams Struggle</h2>
+      <p class="subtitle">
+        When there's no shared foundation, every team solves the same problems differently — costing time, money, and customer trust.
+      </p>
+      <div class="challenges-grid">
+        <div class="challenge-card">
+          <div class="card-icon">&#128678;</div>
+          <h3>Inconsistent Experience</h3>
+          <p>Buttons, forms, and layouts look different across products. Customers notice — and it erodes trust in your brand.</p>
+          <div class="impact">&#8595; Brand trust at risk</div>
+        </div>
+        <div class="challenge-card">
+          <div class="card-icon">&#9203;</div>
+          <h3>Duplicated Effort</h3>
+          <p>Multiple teams rebuild the same elements from scratch. Engineers and designers spend weeks on work that already exists elsewhere.</p>
+          <div class="impact">&#8595; Wasted resources</div>
+        </div>
+        <div class="challenge-card">
+          <div class="card-icon">&#128101;</div>
+          <h3>Slow Collaboration</h3>
+          <p>Without shared standards, handoffs between design and development are slow, ambiguous, and frustrating for everyone.</p>
+          <div class="impact">&#8595; Slower time to market</div>
+        </div>
+        <div class="challenge-card">
+          <div class="card-icon">&#128200;</div>
+          <h3>Difficult to Scale</h3>
+          <p>As your product portfolio grows, maintaining quality becomes exponentially harder without a single source of truth.</p>
+          <div class="impact">&#8595; Growth bottleneck</div>
+        </div>
+        <div class="challenge-card">
+          <div class="card-icon">&#128176;</div>
+          <h3>Rising Costs</h3>
+          <p>Redesigning, reworking, and fixing inconsistencies costs far more than investing in a shared system upfront.</p>
+          <div class="impact">&#8595; Higher total cost of ownership</div>
+        </div>
+        <div class="challenge-card">
+          <div class="card-icon">&#128528;</div>
+          <h3>Frustrated Users</h3>
+          <p>Users must re-learn interactions across your products. Confusion leads to lower engagement, satisfaction, and retention.</p>
+          <div class="impact">&#8595; User satisfaction at risk</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="solution" id="solution">
+    <div class="container fade-in">
+      <div class="section-label">
+        <span class="icon">&#10024;</span> The Solution
+      </div>
+      <h2>A Design System Brings It All Together</h2>
+      <p class="subtitle">
+        It's a strategic investment that creates a single source of truth — enabling teams to build faster, better, and in perfect alignment.
+      </p>
+      <div class="solution-pillars">
+        <div class="pillar">
+          <div class="pillar-icon">&#127912;</div>
+          <h3>Visual Foundation</h3>
+          <p>Colors, typography, spacing, and icons — all defined once and used everywhere.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">&#129513;</div>
+          <h3>Component Library</h3>
+          <p>Pre-built, tested building blocks that teams can assemble like LEGO pieces.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">&#128196;</div>
+          <h3>Pattern Guidelines</h3>
+          <p>Best practices for layouts, interactions, and user flows — documented and accessible.</p>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">&#128295;</div>
+          <h3>Shared Tooling</h3>
+          <p>Design and development tools that keep everyone working from the same playbook.</p>
+        </div>
+      </div>
+      <div class="solution-flow">
+        <div class="flow-step">
+          <span class="step-num">1</span> Define Standards
+        </div>
+        <span class="flow-arrow">&#10140;</span>
+        <div class="flow-step">
+          <span class="step-num">2</span> Build Components
+        </div>
+        <span class="flow-arrow">&#10140;</span>
+        <div class="flow-step">
+          <span class="step-num">3</span> Document &amp; Share
+        </div>
+        <span class="flow-arrow">&#10140;</span>
+        <div class="flow-step">
+          <span class="step-num">4</span> Adopt &amp; Iterate
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits">
+    <div class="container fade-in">
+      <div class="section-label">
+        <span class="icon">&#127775;</span> Value &amp; Benefits
+      </div>
+      <h2>Benefits That Reach Every Team</h2>
+      <p class="subtitle">
+        A design system isn't just a design tool — it's a business advantage that accelerates delivery and elevates quality across the organization.
+      </p>
+
+      <div class="benefits-tabs">
+        <button class="tab-btn active" data-tab="product" onclick="switchTab('product')">Product Team</button>
+        <button class="tab-btn" data-tab="design" onclick="switchTab('design')">Design Team</button>
+        <button class="tab-btn" data-tab="dev" onclick="switchTab('dev')">Development Team</button>
+      </div>
+
+      <!-- Product Team -->
+      <div class="tab-panel active" id="panel-product">
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="card-icon">&#128640;</div>
+            <h3>Faster Time to Market</h3>
+            <p>Launch features faster with pre-built, tested components — no more starting from zero.</p>
+            <div class="metric">&#9650; Up to 50% faster delivery</div>
+          </div>
+          <div class="benefit-card">
+            <div class="card-icon">&#127919;</div>
+            <h3>Consistent Quality</h3>
+            <p>Every product touchpoint meets the same high standard, strengthening your brand identity.</p>
+            <div class="metric">&#9650; Unified brand experience</div>
+          </div>
+          <div class="benefit-card">
+            <div class="card-icon">&#128202;</div>
+            <h3>Scalable Growth</h3>
+            <p>Add new products and features without multiplying effort. The system grows with you.</p>
+            <div class="metric">&#9650; Linear cost, exponential value</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design Team -->
+      <div class="tab-panel" id="panel-design">
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="card-icon">&#9997;</div>
+            <h3>Focus on Creativity</h3>
+            <p>Spend less time on repetitive work and more time solving meaningful design challenges.</p>
+            <div class="metric">&#9650; More strategic design time</div>
+          </div>
+          <div class="benefit-card">
+            <div class="card-icon">&#128257;</div>
+            <h3>Reuse &amp; Efficiency</h3>
+            <p>A shared library of components eliminates redundant design work across teams and products.</p>
+            <div class="metric">&#9650; 60% less redundant work</div>
+          </div>
+          <div class="benefit-card">
+            <div class="card-icon">&#129504;</div>
+            <h3>Team Alignment</h3>
+            <p>New designers onboard faster with clear guidelines. The whole team speaks the same visual language.</p>
+            <div class="metric">&#9650; Faster onboarding</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Development Team -->
+      <div class="tab-panel" id="panel-dev">
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="card-icon">&#128268;</div>
+            <h3>Clean Handoffs</h3>
+            <p>Clear specs and ready-to-use components mean less guesswork and fewer back-and-forth cycles.</p>
+            <div class="metric">&#9650; 40% fewer revision cycles</div>
+          </div>
+          <div class="benefit-card">
+            <div class="card-icon">&#9889;</div>
+            <h3>Faster Implementation</h3>
+            <p>Pre-built, documented components reduce development time from days to hours.</p>
+            <div class="metric">&#9650; 3x faster UI development</div>
+          </div>
+          <div class="benefit-card">
+            <div class="card-icon">&#128736;</div>
+            <h3>Less Maintenance</h3>
+            <p>Shared components mean bug fixes and updates propagate everywhere automatically.</p>
+            <div class="metric">&#9650; Single update, universal fix</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="comparison" id="comparison">
+    <div class="container fade-in">
+      <div class="section-label" style="background: rgba(255,255,255,0.1); color: white; margin-left: auto; margin-right: auto;">
+        <span class="icon">&#9878;</span> Side by Side
+      </div>
+      <h2>The Difference Is Clear</h2>
+      <p class="subtitle">
+        See how a design system transforms everyday product development — from scattered effort to strategic execution.
+      </p>
+
+      <div class="compare-wrapper">
+        <div class="compare-col without">
+          <div class="col-header">
+            <div class="col-icon">&#10007;</div>
+            <div class="col-title">Without a Design System</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10007;</div>
+            <div class="item-text">Every team creates components from scratch for each project</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10007;</div>
+            <div class="item-text">Buttons, colors, and layouts vary across products</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10007;</div>
+            <div class="item-text">Handoff documents are lengthy, ambiguous, and outdated</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10007;</div>
+            <div class="item-text">Bug fixes require changes in dozens of places</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10007;</div>
+            <div class="item-text">New team members take weeks to get up to speed</div>
+          </div>
+        </div>
+        <div class="compare-col with">
+          <div class="col-header">
+            <div class="col-icon">&#10003;</div>
+            <div class="col-title">With a Design System</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10003;</div>
+            <div class="item-text">Teams assemble proven components in hours, not weeks</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10003;</div>
+            <div class="item-text">Every product feels cohesive, polished, and on-brand</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10003;</div>
+            <div class="item-text">Handoffs are seamless with shared specs and live components</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10003;</div>
+            <div class="item-text">One fix updates the entire product portfolio instantly</div>
+          </div>
+          <div class="compare-item">
+            <div class="item-icon">&#10003;</div>
+            <div class="item-text">Clear guidelines cut onboarding time dramatically</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-metrics">
+        <div class="metric-card">
+          <div class="metric-value">50%</div>
+          <div class="metric-label">Faster Feature Delivery</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="width: 80%"></div></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">60%</div>
+          <div class="metric-label">Less Redundant Work</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="width: 85%"></div></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">3x</div>
+          <div class="metric-label">Faster UI Development</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="width: 90%"></div></div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">40%</div>
+          <div class="metric-label">Fewer Revision Cycles</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="width: 75%"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusion -->
+  <section class="conclusion" id="conclusion">
+    <div class="container fade-in">
+      <div class="section-label" style="margin-left: auto; margin-right: auto;">
+        <span class="icon">&#128161;</span> Moving Forward
+      </div>
+      <h2>A Design System Is a Strategic Investment, Not a Cost</h2>
+      <p class="subtitle">
+        It pays dividends in speed, quality, and customer trust — compounding with every product, feature, and team that adopts it.
+      </p>
+      <div class="cta-points">
+        <div class="cta-point">
+          <div class="point-icon">&#128640;</div>
+          <span>Ship Faster</span>
+        </div>
+        <div class="cta-point">
+          <div class="point-icon">&#127775;</div>
+          <span>Build Better</span>
+        </div>
+        <div class="cta-point">
+          <div class="point-icon">&#129309;</div>
+          <span>Stay Aligned</span>
+        </div>
+        <div class="cta-point">
+          <div class="point-icon">&#128202;</div>
+          <span>Scale Confidently</span>
+        </div>
+      </div>
+      <button class="cta-button" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        Let's Build It Together &#10140;
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Design System Presentation &middot; Confidential</p>
+  </footer>
+
+  <script>
+    /* Tab switching */
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-tab') === tab);
+      });
+      document.querySelectorAll('.tab-panel').forEach(function(panel) {
+        panel.classList.toggle('active', panel.id === 'panel-' + tab);
+      });
+    }
+
+    /* Scroll-driven fade-in */
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    /* Active nav link */
+    var sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY + 100;
+      sections.forEach(function(section) {
+        var top = section.offsetTop;
+        var height = section.offsetHeight;
+        var id = section.getAttribute('id');
+        var link = document.querySelector('nav a[href="#' + id + '"]');
+        if (link) {
+          if (scrollY >= top && scrollY < top + height) {
+            document.querySelectorAll('nav a').forEach(function(a) { a.classList.remove('active'); });
+            link.classList.add('active');
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
