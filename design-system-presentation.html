@@ -825,9 +825,191 @@
       background: var(--primary-muted);
     }
 
+    /* ── Timeline ── */
+    .timeline-subsection {
+      margin-top: 5rem;
+    }
+
+    .timeline-subsection h3 {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1rem;
+    }
+
+    .timeline-chart {
+      min-width: 820px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .tl-quarters {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .tl-quarter-label {
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--primary);
+      text-align: center;
+      padding-bottom: 0.5rem;
+    }
+
+    .tl-months {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 3px;
+      margin-bottom: 1.75rem;
+    }
+
+    .tl-month {
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.45rem 0;
+      border-radius: 6px;
+      color: white;
+      letter-spacing: 0.02em;
+    }
+
+    .tl-month.q1 {
+      background: var(--primary);
+    }
+
+    .tl-month.q2 {
+      background: #C4366F;
+    }
+
+    .tl-gantt {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .tl-row {
+      display: grid;
+      grid-template-columns: repeat(32, 1fr);
+      gap: 0;
+      height: 48px;
+      align-items: stretch;
+    }
+
+    .tl-bar {
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tl-bar:hover {
+      transform: scale(1.015);
+      box-shadow: var(--shadow-md);
+      z-index: 2;
+    }
+
+    .tl-bar.completed {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .tl-bar.active {
+      background: #FBCE7D;
+      color: var(--primary);
+    }
+
+    .tl-bar.upcoming {
+      background: #E8E0D8;
+      color: var(--text-light);
+    }
+
+    .tl-bar-label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tl-gridlines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tl-gridline {
+      border-right: 1px dashed rgba(66, 0, 30, 0.07);
+    }
+
+    .tl-gridline:last-child {
+      border-right: none;
+    }
+
+    .tl-gantt-wrap {
+      position: relative;
+    }
+
+    .tl-gantt {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-legend {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tl-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .tl-legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    .tl-legend-dot.dot-completed { background: #4CAF50; }
+    .tl-legend-dot.dot-active { background: #FBCE7D; }
+    .tl-legend-dot.dot-upcoming { background: #E8E0D8; }
+
     @media (max-width: 768px) {
       .progress-grid {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .timeline-scroll {
+        margin-left: -1.25rem;
+        margin-right: -1.25rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
       }
     }
 
@@ -1386,6 +1568,88 @@
           <h3>Design Tokens</h3>
           <div class="progress-detail">Variables &amp; values</div>
           <div class="progress-status in-progress">&#9650; In progress</div>
+        </div>
+      </div>
+
+      <!-- Timeline Subsection -->
+      <div class="timeline-subsection fade-in">
+        <h3>Timeline</h3>
+        <div class="timeline-scroll">
+          <div class="timeline-chart">
+            <!-- Quarter headers -->
+            <div class="tl-quarters">
+              <div class="tl-quarter-label">Q1</div>
+              <div class="tl-quarter-label">Q2</div>
+            </div>
+
+            <!-- Month labels -->
+            <div class="tl-months">
+              <div class="tl-month q1">January</div>
+              <div class="tl-month q1">February</div>
+              <div class="tl-month q1">March</div>
+              <div class="tl-month q1">April</div>
+              <div class="tl-month q2">May</div>
+              <div class="tl-month q2">June</div>
+              <div class="tl-month q2">July</div>
+              <div class="tl-month q2">August</div>
+            </div>
+
+            <!-- Gantt rows -->
+            <div class="tl-gantt-wrap">
+              <div class="tl-gridlines">
+                <div class="tl-gridline"></div>
+                <div class="tl-gridline"></div>
+                <div class="tl-gridline"></div>
+                <div class="tl-gridline"></div>
+                <div class="tl-gridline"></div>
+                <div class="tl-gridline"></div>
+                <div class="tl-gridline"></div>
+                <div class="tl-gridline"></div>
+              </div>
+              <div class="tl-gantt">
+                <!-- Row 1: Diagnosis and Alignment (Jan–Feb) -->
+                <div class="tl-row">
+                  <div class="tl-bar completed" style="grid-column: 1 / 9;">
+                    <span class="tl-bar-label">Diagnosis and Alignment</span>
+                  </div>
+                </div>
+                <!-- Row 2: Visual Foundation (Feb–Mar) -->
+                <div class="tl-row">
+                  <div class="tl-bar completed" style="grid-column: 5 / 13;">
+                    <span class="tl-bar-label">Visual Foundation (styles)</span>
+                  </div>
+                </div>
+                <!-- Row 3: Core Components (Mar–Jun) -->
+                <div class="tl-row">
+                  <div class="tl-bar active" style="grid-column: 9 / 23;">
+                    <span class="tl-bar-label">Core Components</span>
+                  </div>
+                </div>
+                <!-- Row 4: Patterns (May–Aug) -->
+                <div class="tl-row">
+                  <div class="tl-bar upcoming" style="grid-column: 19 / 33;">
+                    <span class="tl-bar-label">Patterns</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="tl-legend">
+              <div class="tl-legend-item">
+                <div class="tl-legend-dot dot-completed"></div>
+                Completed
+              </div>
+              <div class="tl-legend-item">
+                <div class="tl-legend-dot dot-active"></div>
+                In Progress
+              </div>
+              <div class="tl-legend-item">
+                <div class="tl-legend-dot dot-upcoming"></div>
+                Upcoming
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
