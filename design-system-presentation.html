@@ -830,7 +830,7 @@
       margin-top: 5rem;
     }
 
-    .timeline-subsection h3 {
+    .timeline-subsection-title {
       text-align: center;
       font-size: 1.3rem;
       font-weight: 800;
@@ -845,41 +845,41 @@
     }
 
     .timeline-chart {
-      min-width: 820px;
+      min-width: 780px;
       max-width: 1000px;
       margin: 0 auto;
     }
 
+    /* Quarter headers */
     .tl-quarters {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      margin-bottom: 0.5rem;
+      grid-template-columns: 1fr 6px 1fr;
+      margin-bottom: 0.4rem;
     }
 
     .tl-quarter-label {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 900;
       color: var(--primary);
       text-align: center;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.35rem;
     }
 
+    /* Month strip */
     .tl-months {
       display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: 3px;
-      margin-bottom: 1.75rem;
+      grid-template-columns: repeat(4, 1fr) 6px repeat(4, 1fr);
+      gap: 0;
+      margin-bottom: 0;
     }
 
     .tl-month {
       text-align: center;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      padding: 0.45rem 0;
-      border-radius: 6px;
+      padding: 0.5rem 0;
       color: white;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
     }
 
     .tl-month.q1 {
@@ -890,18 +890,74 @@
       background: #C4366F;
     }
 
+    .tl-month.q1:first-child {
+      border-radius: 6px 0 0 6px;
+    }
+
+    .tl-month.q1:nth-child(4) {
+      border-radius: 0 6px 6px 0;
+    }
+
+    .tl-month.q2:nth-child(6) {
+      border-radius: 6px 0 0 6px;
+    }
+
+    .tl-month.q2:last-child {
+      border-radius: 0 6px 6px 0;
+    }
+
+    .tl-month-gap {
+      background: transparent;
+    }
+
+    /* Connector lines + Gantt area */
+    .tl-gantt-area {
+      position: relative;
+      padding-top: 1rem;
+    }
+
+    .tl-connectors {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 6px repeat(4, 1fr);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tl-connector {
+      border-right: 1px solid rgba(66, 0, 30, 0.1);
+    }
+
+    .tl-connector:nth-child(4) {
+      border-right: none;
+    }
+
+    .tl-connector:nth-child(5) {
+      border-right: none;
+    }
+
+    .tl-connector:last-child {
+      border-right: none;
+    }
+
+    /* Gantt rows */
     .tl-gantt {
       position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.5rem;
     }
 
     .tl-row {
       display: grid;
-      grid-template-columns: repeat(32, 1fr);
+      grid-template-columns: repeat(32, 1fr) 6px repeat(32, 1fr);
       gap: 0;
-      height: 48px;
+      height: 52px;
       align-items: stretch;
     }
 
@@ -910,31 +966,30 @@
       display: flex;
       align-items: center;
       padding: 0 1rem;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: var(--primary);
       position: relative;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .tl-bar:hover {
-      transform: scale(1.015);
+      transform: scale(1.02);
       box-shadow: var(--shadow-md);
       z-index: 2;
     }
 
     .tl-bar.completed {
-      background: #4CAF50;
+      background: #52B768;
       color: white;
     }
 
     .tl-bar.active {
-      background: #FBCE7D;
+      background: #F8CE82;
       color: var(--primary);
     }
 
     .tl-bar.upcoming {
-      background: #E8E0D8;
+      background: #E6DDD5;
       color: var(--text-light);
     }
 
@@ -943,62 +998,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-
-    .tl-gridlines {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .tl-gridline {
-      border-right: 1px dashed rgba(66, 0, 30, 0.07);
-    }
-
-    .tl-gridline:last-child {
-      border-right: none;
-    }
-
-    .tl-gantt-wrap {
-      position: relative;
-    }
-
-    .tl-gantt {
-      position: relative;
-      z-index: 1;
-    }
-
-    .tl-legend {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 1.75rem;
-      flex-wrap: wrap;
-    }
-
-    .tl-legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--text-light);
-    }
-
-    .tl-legend-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 3px;
-    }
-
-    .tl-legend-dot.dot-completed { background: #4CAF50; }
-    .tl-legend-dot.dot-active { background: #FBCE7D; }
-    .tl-legend-dot.dot-upcoming { background: #E8E0D8; }
 
     @media (max-width: 768px) {
       .progress-grid {
@@ -1573,80 +1572,67 @@
 
       <!-- Timeline Subsection -->
       <div class="timeline-subsection fade-in">
-        <h3>Timeline</h3>
+        <h3 class="timeline-subsection-title">Timeline</h3>
         <div class="timeline-scroll">
           <div class="timeline-chart">
             <!-- Quarter headers -->
             <div class="tl-quarters">
               <div class="tl-quarter-label">Q1</div>
+              <div></div>
               <div class="tl-quarter-label">Q2</div>
             </div>
 
-            <!-- Month labels -->
+            <!-- Month strip -->
             <div class="tl-months">
               <div class="tl-month q1">January</div>
               <div class="tl-month q1">February</div>
               <div class="tl-month q1">March</div>
               <div class="tl-month q1">April</div>
+              <div class="tl-month-gap"></div>
               <div class="tl-month q2">May</div>
               <div class="tl-month q2">June</div>
               <div class="tl-month q2">July</div>
               <div class="tl-month q2">August</div>
             </div>
 
-            <!-- Gantt rows -->
-            <div class="tl-gantt-wrap">
-              <div class="tl-gridlines">
-                <div class="tl-gridline"></div>
-                <div class="tl-gridline"></div>
-                <div class="tl-gridline"></div>
-                <div class="tl-gridline"></div>
-                <div class="tl-gridline"></div>
-                <div class="tl-gridline"></div>
-                <div class="tl-gridline"></div>
-                <div class="tl-gridline"></div>
+            <!-- Gantt area with connector lines -->
+            <div class="tl-gantt-area">
+              <div class="tl-connectors">
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
+                <div class="tl-connector"></div>
               </div>
               <div class="tl-gantt">
-                <!-- Row 1: Diagnosis and Alignment (Jan–Feb) -->
+                <!-- Diagnosis and Alignment: Jan → ~⅓ Feb -->
                 <div class="tl-row">
-                  <div class="tl-bar completed" style="grid-column: 1 / 9;">
+                  <div class="tl-bar completed" style="grid-column: 1 / 12;">
                     <span class="tl-bar-label">Diagnosis and Alignment</span>
                   </div>
                 </div>
-                <!-- Row 2: Visual Foundation (Feb–Mar) -->
+                <!-- Visual Foundation (styles): ~⅓ Feb → ~mid Mar -->
                 <div class="tl-row">
-                  <div class="tl-bar completed" style="grid-column: 5 / 13;">
+                  <div class="tl-bar completed" style="grid-column: 12 / 21;">
                     <span class="tl-bar-label">Visual Foundation (styles)</span>
                   </div>
                 </div>
-                <!-- Row 3: Core Components (Mar–Jun) -->
+                <!-- Core Components: ~mid Mar → ~mid/end May -->
                 <div class="tl-row">
-                  <div class="tl-bar active" style="grid-column: 9 / 23;">
+                  <div class="tl-bar active" style="grid-column: 19 / 41;">
                     <span class="tl-bar-label">Core Components</span>
                   </div>
                 </div>
-                <!-- Row 4: Patterns (May–Aug) -->
+                <!-- Patterns: ~start Jun → ~end Jul -->
                 <div class="tl-row">
-                  <div class="tl-bar upcoming" style="grid-column: 19 / 33;">
+                  <div class="tl-bar upcoming" style="grid-column: 42 / 58;">
                     <span class="tl-bar-label">Patterns</span>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            <!-- Legend -->
-            <div class="tl-legend">
-              <div class="tl-legend-item">
-                <div class="tl-legend-dot dot-completed"></div>
-                Completed
-              </div>
-              <div class="tl-legend-item">
-                <div class="tl-legend-dot dot-active"></div>
-                In Progress
-              </div>
-              <div class="tl-legend-item">
-                <div class="tl-legend-dot dot-upcoming"></div>
-                Upcoming
               </div>
             </div>
           </div>
