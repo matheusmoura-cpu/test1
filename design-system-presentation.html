@@ -845,15 +845,15 @@
     }
 
     .timeline-chart {
-      min-width: 780px;
-      max-width: 1000px;
+      min-width: 820px;
+      max-width: 1060px;
       margin: 0 auto;
     }
 
     /* Quarter headers */
     .tl-quarters {
       display: grid;
-      grid-template-columns: 1fr 6px 1fr;
+      grid-template-columns: 3fr 8px 3fr 8px 3fr;
       margin-bottom: 0.4rem;
     }
 
@@ -865,10 +865,10 @@
       padding-bottom: 0.35rem;
     }
 
-    /* Month strip */
+    /* Month strip — 3 quarters × 3 months with gaps */
     .tl-months {
       display: grid;
-      grid-template-columns: repeat(4, 1fr) 6px repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr) 8px repeat(3, 1fr) 8px repeat(3, 1fr);
       gap: 0;
       margin-bottom: 0;
     }
@@ -882,33 +882,14 @@
       letter-spacing: 0.01em;
     }
 
-    .tl-month.q1 {
-      background: var(--primary);
-    }
+    .tl-month.q1 { background: var(--primary); }
+    .tl-month.q2 { background: #C4366F; }
+    .tl-month.q3 { background: #D45C8A; }
 
-    .tl-month.q2 {
-      background: #C4366F;
-    }
+    .tl-month.q-start { border-radius: 6px 0 0 6px; }
+    .tl-month.q-end   { border-radius: 0 6px 6px 0; }
 
-    .tl-month.q1:first-child {
-      border-radius: 6px 0 0 6px;
-    }
-
-    .tl-month.q1:nth-child(4) {
-      border-radius: 0 6px 6px 0;
-    }
-
-    .tl-month.q2:nth-child(6) {
-      border-radius: 6px 0 0 6px;
-    }
-
-    .tl-month.q2:last-child {
-      border-radius: 0 6px 6px 0;
-    }
-
-    .tl-month-gap {
-      background: transparent;
-    }
+    .tl-month-gap { background: transparent; }
 
     /* Connector lines + Gantt area */
     .tl-gantt-area {
@@ -923,7 +904,7 @@
       right: 0;
       bottom: 0;
       display: grid;
-      grid-template-columns: repeat(4, 1fr) 6px repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr) 8px repeat(3, 1fr) 8px repeat(3, 1fr);
       pointer-events: none;
       z-index: 0;
     }
@@ -932,19 +913,12 @@
       border-right: 1px solid rgba(66, 0, 30, 0.1);
     }
 
-    .tl-connector:nth-child(4) {
-      border-right: none;
-    }
-
-    .tl-connector:nth-child(5) {
-      border-right: none;
-    }
-
+    .tl-connector-gap,
     .tl-connector:last-child {
       border-right: none;
     }
 
-    /* Gantt rows */
+    /* Gantt rows — 9 months × 8 sub-cols = 72 + 2 gaps */
     .tl-gantt {
       position: relative;
       z-index: 1;
@@ -955,7 +929,7 @@
 
     .tl-row {
       display: grid;
-      grid-template-columns: repeat(32, 1fr) 6px repeat(32, 1fr);
+      grid-template-columns: repeat(24, 1fr) 8px repeat(24, 1fr) 8px repeat(24, 1fr);
       gap: 0;
       height: 52px;
       align-items: stretch;
@@ -1580,19 +1554,23 @@
               <div class="tl-quarter-label">Q1</div>
               <div></div>
               <div class="tl-quarter-label">Q2</div>
+              <div></div>
+              <div class="tl-quarter-label">Q3</div>
             </div>
 
             <!-- Month strip -->
             <div class="tl-months">
-              <div class="tl-month q1">January</div>
+              <div class="tl-month q1 q-start">January</div>
               <div class="tl-month q1">February</div>
-              <div class="tl-month q1">March</div>
-              <div class="tl-month q1">April</div>
+              <div class="tl-month q1 q-end">March</div>
               <div class="tl-month-gap"></div>
+              <div class="tl-month q2 q-start">April</div>
               <div class="tl-month q2">May</div>
-              <div class="tl-month q2">June</div>
-              <div class="tl-month q2">July</div>
-              <div class="tl-month q2">August</div>
+              <div class="tl-month q2 q-end">June</div>
+              <div class="tl-month-gap"></div>
+              <div class="tl-month q3 q-start">July</div>
+              <div class="tl-month q3">August</div>
+              <div class="tl-month q3 q-end">September</div>
             </div>
 
             <!-- Gantt area with connector lines -->
@@ -1601,9 +1579,11 @@
                 <div class="tl-connector"></div>
                 <div class="tl-connector"></div>
                 <div class="tl-connector"></div>
+                <div class="tl-connector-gap"></div>
                 <div class="tl-connector"></div>
                 <div class="tl-connector"></div>
                 <div class="tl-connector"></div>
+                <div class="tl-connector-gap"></div>
                 <div class="tl-connector"></div>
                 <div class="tl-connector"></div>
                 <div class="tl-connector"></div>
@@ -1611,7 +1591,7 @@
               <div class="tl-gantt">
                 <!-- Diagnosis and Alignment: Jan 15 → Feb 15 -->
                 <div class="tl-row">
-                  <div class="tl-bar completed" style="grid-column: 5 / 13;">
+                  <div class="tl-bar completed" style="grid-column: 4 / 13;">
                     <span class="tl-bar-label">Diagnosis and Alignment</span>
                   </div>
                 </div>
@@ -1629,7 +1609,7 @@
                 </div>
                 <!-- Patterns: Jun 1 → Jul 15 -->
                 <div class="tl-row">
-                  <div class="tl-bar upcoming" style="grid-column: 42 / 54;">
+                  <div class="tl-bar upcoming" style="grid-column: 42 / 55;">
                     <span class="tl-bar-label">Patterns</span>
                   </div>
                 </div>
